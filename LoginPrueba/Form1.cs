@@ -22,5 +22,10 @@ namespace LoginPrueba
             this.Close();
         }
 
+        private void BtnIniciarSesion_Click(object sender, EventArgs e)
+        {
+            string usuario = textBoxUsuario.Text;
+            string contrasena = textContrasena.Text;
+        }
     }
 }
