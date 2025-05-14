@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,32 @@ namespace BLL
 			set { _email = value; }
 		}
 
+		private int _DNI;
 
+		public int DNI
+		{
+			get { return _DNI; }
+			set { _DNI = value; }
+		}
+
+		public bool Loguearse(string usuario, string password) {
+			DAL.Usuario unLogin = new DAL.Usuario();
+
+            DataTable dt = unLogin.IniciarSesion();
+
+            foreach (DataRow fila in dt.Rows)
+			{
+				if (fila["usuario"].ToString() == usuario && fila["clave"].ToString() == password)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
 	}
 }

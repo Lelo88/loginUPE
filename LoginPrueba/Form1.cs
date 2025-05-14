@@ -24,8 +24,22 @@ namespace LoginPrueba
 
         private void BtnIniciarSesion_Click(object sender, EventArgs e)
         {
+            // Obtener los valores de usuario y contraseña de los TextBox
             string usuario = textBoxUsuario.Text;
             string contrasena = textContrasena.Text;
+
+            // Instancia de la clase Usuario
+            BLL.Usuario usuarioLoginBLL = new BLL.Usuario();
+
+            if (usuarioLoginBLL.Loguearse(usuario, contrasena))
+            {
+                // Si el inicio de sesión es exitoso, abrir el formulario principal
+                MessageBox.Show("Inicio de sesión exitoso.");
+            }
+            else
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+            }
         }
     }
 }
