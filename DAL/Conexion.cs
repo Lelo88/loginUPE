@@ -24,7 +24,7 @@ namespace DAL
          */
         private void Conectar()
         {   // HACK: Cadena de conexión hardcodeada. Luego ponerla como parametro de configuración del proyecto u otra alternativa.
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Universidad;Data Source=.\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Universidad;Data Source=DESKTOP-O1ML8GJ";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();
@@ -91,48 +91,41 @@ namespace DAL
             return unaTabla;
         }
 
-        public DataTable LeerPorComando(string pComando)
+        public DataTable LeerPorComando(string pComando, SqlParameter[] parametros = null)
         {
-            //Instancio un objeto del tipo DataTable
             var unaTabla = new DataTable();
-
-            //Instancio un objeto del tipo SqlCommand
             var objComando = new SqlCommand();
 
-            //Me conecto...
             this.Conectar();
 
             try
             {
-
-
-                //Parametrizo el objeto SqlCommand con sus valores respectivos
                 objComando.CommandType = CommandType.Text;
                 objComando.Connection = this.objConexion;
                 objComando.CommandText = pComando;
 
-                //Instancio un adaptador con el parametro SqlCommand
+                // Si hay parámetros, los agregamos
+                if (parametros != null)
+                {
+                    objComando.Parameters.AddRange(parametros);
+                }
+
                 var objAdaptador = new SqlDataAdapter(objComando);
-
-                //Lleno la tabla, el objeto unaTabla con el adaptador
                 objAdaptador.Fill(unaTabla);
-
             }
             catch
             {
-                //Como hay error... por el motivo que sea asigno el resultado a null
                 unaTabla = null;
-
                 throw;
             }
             finally
             {
-                //Siempre, por más que salga bien o mal el llenado, me desconecto
                 this.Desconectar();
             }
 
             return unaTabla;
         }
+
 
         public int EscribirPorComando(string pTexto)
         {

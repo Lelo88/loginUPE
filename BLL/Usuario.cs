@@ -44,7 +44,7 @@ namespace BLL
 		public bool Loguearse(string usuario, string password) {
 			DAL.Usuario unLogin = new DAL.Usuario();
 
-            DataTable dt = unLogin.IniciarSesion();
+            DataTable dt = unLogin.IniciarSesion(usuario, password);
 
             foreach (DataRow fila in dt.Rows)
 			{

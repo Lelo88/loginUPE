@@ -11,3 +11,5 @@ C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\Logi
 C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\LoginPrueba\LoginPrueba\bin\Debug\BLL.dll
 C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\LoginPrueba\LoginPrueba\bin\Debug\BLL.pdb
 C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\LoginPrueba\LoginPrueba\obj\Debug\LoginPru.5F042AC6.Up2Date
+C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\LoginPrueba\LoginPrueba\bin\Debug\DAL.dll
+C:\Users\Leandro\Documents\UPE\TECNICAS DE PROGRAMACION\UNIDAD3\TEORIACAPAS\LoginPrueba\LoginPrueba\bin\Debug\DAL.pdb
