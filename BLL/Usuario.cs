@@ -1,64 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAL;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class Usuario
     {
-		private string _userName;
+        private readonly InterfaceUsuario _usuarioDal;
 
-		public string Username
-		{
-			get { return _userName; }
-			set { _userName = value; }
-		}
-
-        private string _password;
-
-        public string Password
+        public Usuario(InterfaceUsuario usuarioDal)
         {
-            get { return _password; }
-            set { _password = value; }
+            _usuarioDal = usuarioDal;
         }
 
-		private string _email;
-
-		public string MyProperty
-		{
-			get { return _email; }
-			set { _email = value; }
-		}
-
-		private int _DNI;
-
-		public int DNI
-		{
-			get { return _DNI; }
-			set { _DNI = value; }
-		}
-
-		public bool Loguearse(string usuario, string password) {
-			DAL.Usuario unLogin = new DAL.Usuario();
-
-            DataTable dt = unLogin.IniciarSesion(usuario, password);
+        public bool Loguearse(string usuario, string password)
+        {
+            DataTable dt = _usuarioDal.IniciarSesion(usuario, password);
 
             foreach (DataRow fila in dt.Rows)
-			{
-				if (fila["usuario"].ToString() == usuario && fila["clave"].ToString() == password)
+            {
+                if (fila["usuario"].ToString() == usuario && fila["clave"].ToString() == password)
                 {
                     return true;
-                }
-                else
-                {
-                    return false;
                 }
             }
 
             return false;
         }
-	}
+    }
 }

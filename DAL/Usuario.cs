@@ -6,19 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
+using System.Data.SqlClient;
+
 namespace DAL
 {
-    public class Usuario
+    public class Usuario : InterfaceUsuario
     {
-
         public DataTable IniciarSesion(string usuario, string password)
         {
             Conexion objConexion = new Conexion();
 
             SqlParameter[] parametros = new SqlParameter[]
             {
-        new SqlParameter("@Usuario", usuario),
-        new SqlParameter("@Password", password)
+                new SqlParameter("@Usuario", usuario),
+                new SqlParameter("@Password", password)
             };
 
             DataTable dt = objConexion.LeerPorComando(
@@ -28,6 +30,7 @@ namespace DAL
 
             return dt;
         }
-
     }
 }
+
+

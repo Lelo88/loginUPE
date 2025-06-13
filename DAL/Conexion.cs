@@ -11,7 +11,7 @@ using System.Data;
 
 namespace DAL
 {
-    public class Conexion
+    public class Conexion : InterfaceConexion
     {
         private SqlConnection objConexion;
         private string strCadenaDeConexion = "";
